@@ -1,0 +1,165 @@
+﻿@model MVCCRUD.Models.Usuario
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Usuario</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form id="createForm" asp-action="Create">
+            <!-- Mostrar errores de validación del modelo -->
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <!-- Campo Nombres -->
+            <div class="form-group">
+                <label asp-for="Nombres" class="control-label"></label>
+                <input asp-for="Nombres" class="form-control" />
+                <span asp-validation-for="Nombres" class="text-danger"></span>
+            </div>
+
+            <!-- Campo Apellidos -->
+            <div class="form-group">
+                <label asp-for="Apellidos" class="control-label"></label>
+                <input asp-for="Apellidos" class="form-control" />
+                <span asp-validation-for="Apellidos" class="text-danger"></span>
+            </div>
+
+            <!-- Campo Fecha de Nacimiento -->
+            <div class="form-group">
+                <label asp-for="FechaNacimiento" class="control-label"></label>
+                <input asp-for="FechaNacimiento" class="form-control" />
+                <span asp-validation-for="FechaNacimiento" class="text-danger"></span>
+            </div>
+
+            <!-- Campo CUIT -->
+            <div class="form-group">
+                <label asp-for="Cuit" class="control-label"></label>
+                <input asp-for="Cuit" class="form-control" />
+                <span asp-validation-for="Cuit" class="text-danger"></span>
+            </div>
+
+            <!-- Campo Domicilio -->
+            <div class="form-group">
+                <label asp-for="Domicilio" class="control-label"></label>
+                <input asp-for="Domicilio" class="form-control" />
+                <span asp-validation-for="Domicilio" class="text-danger"></span>
+            </div>
+
+            <!-- Campo Celular -->
+            <div class="form-group">
+                <label asp-for="Celular" class="control-label"></label>
+                <input asp-for="Celular" class="form-control" />
+                <span asp-validation-for="Celular" class="text-danger"></span>
+            </div>
+
+            <!-- Campo Email -->
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <!-- Botón de submit -->
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Enlace para volver a la lista -->
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <!-- Validación del formulario con jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#createForm').submit(function (e) {
+                // Validar el formulario antes de enviarlo
+                if (!validateForm()) {
+                    e.preventDefault();
+                }
+            });
+
+            function validateForm() {
+                var isValid = true;
+
+                // Validar Nombres
+                var nombres = $('#Nombres').val();
+                if (nombres.trim() === '') {
+                    $('#Nombres').next('.text-danger').text('El campo Nombres es obligatorio.');
+                    isValid = false;
+                } else {
+                    $('#Nombres').next('.text-danger').text('');
+                }
+
+                // Validar Apellidos
+                var apellidos = $('#Apellidos').val();
+                if (apellidos.trim() === '') {
+                    $('#Apellidos').next('.text-danger').text('El campo Apellidos es obligatorio.');
+                    isValid = false;
+                } else {
+                    $('#Apellidos').next('.text-danger').text('');
+                }
+
+                // Validar Fecha de Nacimiento
+                var fechaNacimiento = $('#FechaNacimiento').val();
+                if (fechaNacimiento.trim() === '') {
+                    $('#FechaNacimiento').next('.text-danger').text('El campo Fecha de Nacimiento es obligatorio.');
+                    isValid = false;
+                } else {
+                    $('#FechaNacimiento').next('.text-danger').text('');
+                }
+
+                // Validar CUIT
+                var cuit = $('#Cuit').val();
+                if (cuit.trim() === '') {
+                    $('#Cuit').next('.text-danger').text('El campo CUIT es obligatorio.');
+                    isValid = false;
+                } else {
+                    $('#Cuit').next('.text-danger').text('');
+                }
+
+                // Validar Domicilio
+                var domicilio = $('#Domicilio').val();
+                if (domicilio.trim() === '') {
+                    $('#Domicilio').next('.text-danger').text('El campo Domicilio es obligatorio.');
+                    isValid = false;
+                } else {
+                    $('#Domicilio').next('.text-danger').text('');
+                }
+
+                // Validar Celular
+                var celular = $('#Celular').val();
+                if (celular.trim() === '') {
+                    $('#Celular').next('.text-danger').text('El campo Celular es obligatorio.');
+                    isValid = false;
+                } else {
+                    $('#Celular').next('.text-danger').text('');
+                }
+
+                // Validar Email
+                var email = $('#Email').val();
+                if (email.trim() === '') {
+                    $('#Email').next('.text-danger').text('El campo Email es obligatorio.');
+                    isValid = false;
+                } else {
+                    $('#Email').next('.text-danger').text('');
+                }
+
+                return isValid;
+            }
+        });
+    </script>
+}

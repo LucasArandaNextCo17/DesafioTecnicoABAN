@@ -1,0 +1,44 @@
+﻿@model MVCCRUD.Models.Usuario
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Usuario</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <!-- Formulario para editar el usuario -->
+        <form asp-action="Edit">
+            <!-- Resumen de validación del modelo -->
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <!-- Campo oculto para el ID del usuario -->
+            <input type="hidden" asp-for="Id" />
+            <!-- Campos para editar los datos del usuario -->
+            <div class="form-group">
+                <label asp-for="Nombres" class="control-label"></label>
+                <input asp-for="Nombres" class="form-control" />
+                <span asp-validation-for="Nombres" class="text-danger"></span>
+            </div>
+            <!-- Repetir el mismo patrón para los otros campos -->
+            <!-- Botón para guardar los cambios -->
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Enlace para volver a la lista de usuarios -->
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    <!-- Scripts de validación del lado del cliente -->
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

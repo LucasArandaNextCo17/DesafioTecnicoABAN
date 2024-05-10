@@ -1,0 +1,77 @@
+﻿@model MVCCRUD.Models.Usuario
+
+@{
+    // Establece el título de la página como "Delete" utilizando ViewData.
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+
+<div>
+    <!-- Encabezado secundario indicando que se va a eliminar un usuario -->
+    <h4>Usuario</h4>
+    <hr /> <!-- Línea horizontal para separar visualmente los detalles del usuario -->
+    <!-- Define una lista descriptiva con estilo de fila (usando la clase `row` de Bootstrap) -->
+    <dl class="row">
+        <!-- Término en la lista descriptiva (etiqueta de descripción) con una columna de tamaño 2 en dispositivos pequeños y superiores (Bootstrap grid system) -->
+        <dt class="col-sm-2">
+            <!-- Muestra el nombre de la propiedad "Nombres" del modelo -->
+            @Html.DisplayNameFor(model => model.Nombres)
+        </dt>
+        <!-- Descripción correspondiente al término en una columna de tamaño 10 en dispositivos pequeños y superiores -->
+        <dd class="col-sm-10">
+            <!-- Muestra el valor de la propiedad "Nombres" del modelo -->
+            @Html.DisplayFor(model => model.Nombres)
+        </dd>
+
+        <!-- Repite el mismo patrón para otras propiedades del modelo -->
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Apellidos)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Apellidos)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.FechaNacimiento)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.FechaNacimiento)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Cuit)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Cuit)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Domicilio)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Domicilio)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Celular)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Celular)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+    </dl>
+</div>
+
+<!-- Formulario para confirmar la eliminación del usuario -->
+<form asp-action="Delete">
+    <!-- Campo oculto que contiene el ID del usuario a eliminar -->
+    <input type="hidden" asp-for="Id" />
+    <!-- Botón para enviar el formulario y confirmar la eliminación -->
+    <input type="submit" value="Delete" class="btn btn-danger" /> |
+    <!-- Enlace para volver a la lista de usuarios, que redirige a la acción "Index" del controlador de usuarios -->
+    <a asp-action="Index">Back to List</a>
+</form>

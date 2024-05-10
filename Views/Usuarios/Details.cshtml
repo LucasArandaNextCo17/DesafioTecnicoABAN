@@ -1,0 +1,72 @@
+﻿@model MVCCRUD.Models.Usuario
+
+@{
+    // Establece el título de la página como "Details" utilizando ViewData.
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <!-- Encabezado secundario indicando que los detalles son de un usuario -->
+    <h4>Usuario</h4>
+    <hr /> <!-- Línea horizontal para separar visualmente los detalles del usuario -->
+    <!-- Define una lista descriptiva con estilo de fila (usando la clase `row` de Bootstrap) -->
+    <dl class="row">
+        <!-- Término en la lista descriptiva (etiqueta de descripción) con una columna de tamaño 2 en dispositivos pequeños y superiores (Bootstrap grid system) -->
+        <dt class="col-sm-2">
+            <!-- Muestra el nombre de la propiedad "Nombres" del modelo -->
+            @Html.DisplayNameFor(model => model.Nombres)
+        </dt>
+        <!-- Descripción correspondiente al término en una columna de tamaño 10 en dispositivos pequeños y superiores -->
+        <dd class="col-sm-10">
+            <!-- Muestra el valor de la propiedad "Nombres" del modelo -->
+            @Html.DisplayFor(model => model.Nombres)
+        </dd>
+
+        <!-- Repite el mismo patrón para otras propiedades del modelo -->
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Apellidos)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Apellidos)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.FechaNacimiento)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.FechaNacimiento)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Cuit)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Cuit)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Domicilio)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Domicilio)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Celular)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Celular)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+    </dl>
+</div>
+
+<div>
+    <!-- Enlace para editar el usuario actual que redirige a la acción "Edit" del controlador de usuarios, pasando el ID del usuario como parámetro -->
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <!-- Enlace para volver a la lista de usuarios, que redirige a la acción "Index" del controlador de usuarios -->
+    <a asp-action="Index">Back to List</a>
+</div>

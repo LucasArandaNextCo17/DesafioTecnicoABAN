@@ -1,0 +1,88 @@
+﻿@model IEnumerable<MVCCRUD.Models.Usuario>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Listado de clientes</h1>
+
+<!-- Enlace para crear un nuevo usuario -->
+<p>
+    <a asp-action="Create">Crear Nuevo</a>
+</p>
+
+<!-- Formulario para buscar usuarios -->
+<form asp-controller="Usuarios" asp-action="Index">
+    <p>
+        Buscar:<input type="text" name="Buscar" class="form-text" />
+        <input type="submit" value="Buscar" class="btn btn-sm btn-dark" />
+    </p>
+</form>
+
+<!-- Tabla para mostrar el listado de usuarios -->
+<table class="table">
+    <thead>
+        <tr>
+            <!-- Encabezados de las columnas -->
+            <th>
+                @Html.DisplayNameFor(model => model.Nombres)
+            </th>
+            <!-- Repetir para las otras columnas -->
+            <th>
+                @Html.DisplayNameFor(model => model.Apellidos)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaNacimiento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cuit)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Domicilio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Celular)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Iterar sobre cada usuario y mostrar los datos en la tabla -->
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombres)
+                </td>
+                <!-- Repetir para los otros campos -->
+                <td>
+                    @Html.DisplayFor(modelItem => item.Apellidos)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaNacimiento)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cuit)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Domicilio)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Celular)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    <!-- Enlaces para editar, ver detalles y eliminar cada usuario -->
+                    <a asp-action="Edit" class="btn btn-warning" asp-route-id="@item.Id">Editar</a> |
+                    <a asp-action="Details" class="btn btn-primary" asp-route-id="@item.Id">Detalles</a> |
+                    <a asp-action="Delete" class="btn btn-danger" asp-route-id="@item.Id">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
