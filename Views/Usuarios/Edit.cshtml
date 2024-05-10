@@ -10,20 +10,44 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <!-- Formulario para editar el usuario -->
         <form asp-action="Edit">
-            <!-- Resumen de validación del modelo -->
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <!-- Campo oculto para el ID del usuario -->
             <input type="hidden" asp-for="Id" />
-            <!-- Campos para editar los datos del usuario -->
             <div class="form-group">
                 <label asp-for="Nombres" class="control-label"></label>
                 <input asp-for="Nombres" class="form-control" />
                 <span asp-validation-for="Nombres" class="text-danger"></span>
             </div>
-            <!-- Repetir el mismo patrón para los otros campos -->
-            <!-- Botón para guardar los cambios -->
+            <div class="form-group">
+                <label asp-for="Apellidos" class="control-label"></label>
+                <input asp-for="Apellidos" class="form-control" />
+                <span asp-validation-for="Apellidos" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FechaNacimiento" class="control-label"></label>
+                <input asp-for="FechaNacimiento" class="form-control" />
+                <span asp-validation-for="FechaNacimiento" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Cuit" class="control-label"></label>
+                <input asp-for="Cuit" class="form-control" />
+                <span asp-validation-for="Cuit" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Domicilio" class="control-label"></label>
+                <input asp-for="Domicilio" class="form-control" />
+                <span asp-validation-for="Domicilio" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Celular" class="control-label"></label>
+                <input asp-for="Celular" class="form-control" />
+                <span asp-validation-for="Celular" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
@@ -31,13 +55,11 @@
     </div>
 </div>
 
-<!-- Enlace para volver a la lista de usuarios -->
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {
-    <!-- Scripts de validación del lado del cliente -->
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
